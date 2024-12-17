@@ -150,17 +150,11 @@ if __name__ == "__main__":
     
     # four peaks
     sigma = 10
-    # initialFunction = lambda x, y: np.sum([
-    #     np.exp(-((x - c)*(x - c) + (y - d) * (y - d)) / (2*sigma * sigma) )
-    # for c in [np.pi / 4, 3 * np.pi / 4] for d in [np.pi / 4, 3 * np.pi / 4]]) / (4*sigma * np.sqrt(2 * np.pi))
-    # initialFunction = lambda x, y: np.exp(-((x - np.pi/2)**2 + (y - np.pi / 2)**2)/ (2*sigma*sigma)) / np.sqrt(2 * np.pi * sigma * sigma)
     initialFunction = lambda x, y: 1 if np.abs(x - np.pi/2) < 1 and np.abs(y - np.pi/2) < 0.5 else 0
 
 
 
     diffusion.initialize([initialFunction])
-    # print(f"Lambdas: {diffusion.getLambdas()}")
-    # print(f"Initial Coefficients: {diffusion.getInitialCoefficients()}")
     print("Initialized.")
 
     t0: float = 0
@@ -168,7 +162,6 @@ if __name__ == "__main__":
     timesteps: int = 100
     diffusion.runTimestepperAndCache(t0, h, timesteps)
     print("Ran Simulation. Proceeding to plot.")
-    # print(f"Result from timestepper: {diffusion.getTimestepResult()}")
 
     diffusion.generatePlotForFunction(
         0,

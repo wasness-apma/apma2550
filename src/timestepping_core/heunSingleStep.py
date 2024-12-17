@@ -9,11 +9,6 @@ def expoEulerStep(t_0: float, t_1: float, states: List[float], lambdas: np.array
     h = t_1 - t_0
     cs = heunCoefficients.expoEulerCoefficient(h, lambdas)
 
-    # print(f"Reaction = {reaction(t_0, states)}")
-    # print(f"Cs = {cs}")
-    # print(f"Total Adjustment = {cs * reaction(t_0, states)}")
-    # print(f"to Add to = np.exp(-lambdas * h) * states)")
-
     return (np.exp(-lambdas * h) * states) + cs * reaction(t_0, states)
 
 # e^{-lambda h}(u_n + h(L(lambda h)f(t_n, u_n) + M(lambda h)f(t_n, u_n + Euler step)))
@@ -28,13 +23,6 @@ def expoHeunStep(t_0: float, t_1: float, states: List[float], lambdas: np.array,
     ms = heunCoefficients.expoHeunSteppedCoefficient(h, lambdas)
     expoHeunSteppedReaction = ms * reaction(t_1, eulerSteppedState)
 
-    # print(f"Current State: {states}")
-    # print(f"eulerSteppedState: {eulerSteppedState}")
-    # print(f"expoHeunBaseReaction: {expoHeunBaseReaction}")
-    # print(f"expoHeunSteppedReaction: {expoHeunSteppedReaction}")
-    # toReturn = (np.exp(-lambdas * h) * states) + expoHeunBaseReaction + expoHeunSteppedReaction
-    # print(f"toReturn: {toReturn}")
-    
     return (np.exp(-lambdas * h) * states) + expoHeunBaseReaction + expoHeunSteppedReaction
 
 

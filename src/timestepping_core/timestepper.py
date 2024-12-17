@@ -32,7 +32,6 @@ if __name__ == "__main__":
     # so, f == 1.
     # we expect the formula u_n = e^{-nh lambda} u_0 + (1 - e^{-n h lambda})/lambda
 
-
     t0 = 0
     h = .01
     timesteps = 20
